@@ -10,6 +10,7 @@ export class FormulaireComponent implements OnInit {
   valid1 : boolean = true;
   valid2 : boolean = false;
   click : string = "";
+  prenom : string = "toto";
   constructor() { }
 
   click1 (){

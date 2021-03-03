@@ -4,3 +4,9 @@
 <button [disabled]="!valid2" (click)="click2()">Enregistrer2</button>
 <!-- //[] controler -> elemenet |  () evenement on appelle -> une méthode du controller  
 [] = attribut , () = event-->
+
+<br>
+<br>
+Prenom : {{prenom}} 
+<input [(ngModel)]="prenom"/>
+<app-adresse [prenom]="prenom"></app-adresse>
