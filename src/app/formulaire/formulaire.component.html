@@ -1,23 +1,77 @@
-<p>Saisie du compte client</p>
 {{click}}
-<button [disabled]="!valid1" (click)="click1()">Enregistrer1</button>
-<button [disabled]="!valid2" (click)="click2()">Enregistrer2</button>
+<button [disabled]="!valid1" (click)="click1()">Afficher</button>
+<button [disabled]="!valid2" (click)="click2()">Cacher</button>
 <br/>
 <br/>
-Prenom : {{prenom | uppercase}}
+
+<form name="formSaisie" id="mainForm">
+    <fieldset>
+        <legend>
+            <h2>Inscription</h2>
+        </legend>
+
+        Nom :<br />
+        <input type="text" name="nom" id="nom" [(ngModel)]="nom"/>
+        <div [hidden]="!nomVide" *ngIf="!nom">* Ce champ est requis.</div>
+        <div [hidden]="!nom3min" >* Veuillez entrer un nom d'au moins 3 caractères.</div>
+        <br />
+
+        Prénom :<br />
+        <input type="text" name="prenom" id="prenom" [(ngModel)]="prenom"/>
+        <div [hidden]="!prenomVide" *ngIf="!prenom">* Ce champ est requis.</div>
+        <div [hidden]="!prenom3min" >* Veuillez entrer un prenom d'au moins 3 caractères.</div>
+        <br />
+
+        Adresse :<br />
+        <input type="text" name="adresse" id="adresse" [(ngModel)]="adresse"/>
+        <div [hidden]="!adresseVide" *ngIf="!adresse">* Ce champ est requis.</div>
+        <div [hidden]="!adresse3min" >* Veuillez entrer une adresse d'au moins 3 caractères.</div>
+        <br />
+
+        Code postal :<br />
+        <input type="number" name="cp" id="cp" [(ngModel)]="cp"/>
+        <div [hidden]="!cpVide" *ngIf="!cp">* Ce champ est requis.</div>
+        <div [hidden]="!cp5min" >* Veuillez entrer un code postal à 5 chiffres.</div>
+        <br />
+
+        E-mail :<br />
+        <input type="email" name="email" id="email" />
+        <br />
+        
+        Pays :<br />
+        <select name="country" id="country-select">
+
+            <option value="country" *ngFor="let a of listPays">{{a}}</option>
+        </select>
+        <br />
+
+        <p><br />
+            Civilité :<br />
+
+            <input type="radio" name="civilite" value="Mlle" id="Mlle" /> <label for="Mlle">Mlle</label>
+            <input type="radio" name="civilite" value="Mme" id="Mme" /> <label for="Mme">Mme</label>
+            <input type="radio" name="civilite" value="M." id="M." /> <label for="M.">M.</label>
+        </p>
+
+        Login :<br />
+        <input type="text" name="login" id="login" [(ngModel)]="login"/>
+        <div [hidden]="!loginVide" *ngIf="!login">* Ce champ est requis.</div>
+        <div [hidden]="!login3min" >* Veuillez entrer un login d'au moins 3 caractères.</div>
+        <br />
+
+        Mot de passe :<br />
+        <input type="password" name="mdp" id="mdp" />
+        <br />
+
+    </fieldset>
+    <br />
+    <button (click)="clickValidation()">Valider</button>
+</form>
 
 
-<input [(ngModel)]="prenom"/>
-
-
-
-<br/>
-<div *ngIf="prenom=='toto'"> Bonjour {{prenom}}
-
+<div [hidden]="!valid1">
     
-</div>
+    <app-recup [nom]="nomRecup" [prenom]="prenomRecup" [adresse]="adresseRecup" [cp]="cpRecup" [login]="loginRecup"></app-recup>
 
-<div *ngFor="let a of listArticles">
-    <app-adresse [prenom]="a"></app-adresse>
-
-</div>    
+        
+</div>  

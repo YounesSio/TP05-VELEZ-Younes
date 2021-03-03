@@ -7,7 +7,8 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class AdresseComponent implements OnInit {
 
-  @Input () prenom : string = "";
+  @Input () prenom1 : string = "";
+  @Input () nom : string = "";
   constructor() { }
 
   ngOnInit(): void {

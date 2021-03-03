@@ -6,13 +6,17 @@ import { HeaderComponent } from './header/header.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { FormsModule } from '@angular/forms';
 import { AdresseComponent } from './adresse/adresse.component';
+import { FooterComponent } from './footer/footer.component';
+import { RecupComponent } from './recup/recup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FormulaireComponent,
-    AdresseComponent
+    AdresseComponent,
+    FooterComponent,
+    RecupComponent
   ],
   imports: [
     BrowserModule,FormsModule
