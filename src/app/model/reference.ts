@@ -1,5 +1,6 @@
 export interface Reference {
-    reference : string;
+    reference? : string;
+    id? : number;
     name? : string;
-    prix? : number;
+    price? : number;
 }

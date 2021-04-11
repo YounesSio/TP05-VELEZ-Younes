@@ -30,9 +30,10 @@ export class PanierState {
     del(
             {getState, patchState } :  StateContext<PanierStateModel>, 
             { payload }: DelReference) {
-            const state = getState();
-            // TODO : Supprimer la référence passée en paramètre
-            patchState({panier : [...state.panier]});
+              const state = getState();
+              let index = state.panier.findIndex(x => x.reference == payload.reference);
+              state.panier.splice(index);
+              patchState({ panier: state.panier });
     }
 
 }

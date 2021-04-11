@@ -66,7 +66,7 @@ export class CatalogueComponent implements OnInit {
  addPanier(p: Product) {
     // console.log (p.id);
     // console.log (p.name);
-    this.store.dispatch (new AddReference ({"reference":p.ref, name: p.name}));
+    this.store.dispatch (new AddReference ({"reference":p.ref, id: p.id,name: p.name, price: p.price}));
    // this.store.dispatch(new AddReference({reference: p.ref, name: p.name}));
   }
 
