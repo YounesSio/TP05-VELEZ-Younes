@@ -103,5 +103,6 @@ $app->get('/api/hello/{name}', function (Request $request, Response $response, $
 
 
 // Chargement du Middleware
+$app->addErrorMiddleware(true, true, true);
 $app->add(new Tuupola\Middleware\JwtAuthentication($options));
 $app->run ();
