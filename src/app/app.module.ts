@@ -10,13 +10,15 @@ import { FooterComponent } from './footer/footer.component';
 import { RecupComponent } from './recup/recup.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { MoteurDeRechercheComponent } from './moteur-de-recherche/moteur-de-recherche.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { DetailComponent } from './detail/detail.component';
 import { PanierComponent } from './panier/panier.component';
 import { NgxsModule } from '@ngxs/store';
 import { PanierState } from './states/panier-state';
+import { LoginComponent } from './login/login.component';
+import { ApiHttpInterceptor } from './api-http.interceptor';
 
 
 const appRoutes : Routes = [
@@ -24,7 +26,8 @@ const appRoutes : Routes = [
   {path:'catalogue', component:CatalogueComponent},
   {path:'formulaire', component:FormulaireComponent},
   {path:'detail/:id', component:DetailComponent},
-  {path:'panier', component:PanierComponent}
+  {path:'panier', component:PanierComponent},
+  {path:'login',component:LoginComponent}
 ]
 
 @NgModule({
@@ -38,12 +41,15 @@ const appRoutes : Routes = [
     CatalogueComponent,
     MoteurDeRechercheComponent,
     DetailComponent,
-    PanierComponent
+    PanierComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,FormsModule,HttpClientModule,RouterModule.forRoot(appRoutes),NgxsModule.forRoot ([PanierState])
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS,   useClass: ApiHttpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

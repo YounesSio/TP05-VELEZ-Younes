@@ -32,7 +32,7 @@ export class PanierState {
             { payload }: DelReference) {
               const state = getState();
               let index = state.panier.findIndex(x => x.reference == payload.reference);
-              state.panier.splice(index);
+              state.panier.splice(index, 1);
               patchState({ panier: state.panier });
     }
 
